@@ -1,0 +1,43 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+{% load notes_template_tags %}
+
+{% block title %}
+    {{ block.super }} - Add new note
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="form_content">
+        <div class="greet">
+            <h1 class="greet-header">
+                Add a new note
+            </h1>
+        </div>
+        <div class="wrap mt5">
+            <form class="loginform noteform" action="" method="post">
+                {% csrf_token %}
+                <div class="">
+                    {{ errors }}
+                </div>
+                <div class="formrow">
+                    <label for="groupinput">Группа: </label>
+                    <input id="groupinput" type="text" maxlength="50" name="group_name" value="{{ group_name }}">
+                </div>
+                <div class="formrow">
+                    <label for="textinput">Заметка: </label>
+                    <input id="textinput" type="text" maxlength="255" name="text">
+                </div>
+                <div class="formrow">
+                    <label for="timeinput">Время: </label>
+                    <input id="timeinput" type="datetime-local" name="planned_date">
+                </div>
+                <div class="buttons">
+                    <button type="submit" name="buttonReg">Создать</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

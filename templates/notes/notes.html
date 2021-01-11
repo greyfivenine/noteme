@@ -1,0 +1,35 @@
+{% load static %}
+
+{% for key, items in notes.items %}
+    <div class="group">
+        <div class="group-title">
+            {{ key }}
+            <a class="hide-button" href="#" role="button" to="block{{ forloop.counter }}">hide</a>
+        </div>
+        <div class="cards" id="block{{ forloop.counter }}">
+            {% for item in items %}
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-buttons">
+                            <a class="card-btn" href="{% url 'change_note' item.id  %}"><i class="far fa-edit"></i></a>
+                            <!-- <button class="card-btn" type="button" name="button_edit"><i class="far fa-edit"></i></button> -->
+                            <button class="card-btn" note_id="{{ item.id }}" type="button" name="button_delete"><i class="far fa-times-circle"></i></button>
+                        </div>
+                        <div class="date">
+                            {{ item.planned_date|date:"d.m.Y H:i" }}
+                        </div>
+                    </div>
+
+                    <div class="note">
+                        {{ item.text }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="card_add">
+                <div class="pic">
+                    <a href="{% url 'add_note' key.id %}"><img class="img" src="{% static 'images/image.png' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

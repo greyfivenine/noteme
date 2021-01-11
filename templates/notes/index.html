@@ -1,0 +1,32 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+{% load notes_template_tags %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="content">
+        {% if request.user.is_authenticated %}
+            {% get_notes_list request %}
+        {% else %}
+        <div class="greet">
+            <h1 class="greet-header">Hey there, partner!</h1>
+            <div class="text-wrapper">
+                <p class="greet-text">
+                    Here you can create your notes or planned tasks or whatever you want. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro necessitatibus id sapiente dolorum ducimus dignissimos, quidem accusantium culpa accusamus, omnis magni distinctio inventore possimus libero. Ipsum ut voluptate voluptatum quaerat quibusdam, sequi, nam corporis cum incidunt vel! Pariatur debitis eos inventore ipsa, esse rem, cupiditate saepe doloribus non atque incidunt.
+                </p>
+            </div>
+            <div class="text-wrapper">
+                <p class="greet-text">
+                    Before you get start, you need to <a href="#">sign up</a> or <a href="#">sign in</a>, if you already have account.
+                </p>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

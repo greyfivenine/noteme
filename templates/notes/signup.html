@@ -1,0 +1,43 @@
+{% extends 'notes/base.html' %}
+{% block title %}
+    {{ block.super }} - Sign Up
+{% endblock %}
+
+{% block content %}
+    <div class="containerloginform">
+        <div class="errors">
+            {% if errors %}
+                <ul class="errorlist">
+                    <li>{{ errors }}</li>
+                </ul>
+            {% endif %}
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
+        </div>
+        <div class="wrap">
+            <form class="loginform" action="" method="post">
+                {% csrf_token %}
+                <div class="formrow">
+                    <label for="logininput">Логин: </label>
+                    <input id="logininput" type="text" name="username">
+                </div>
+                <div class="formrow">
+                    <label for="emailinput">E-mail: </label>
+                    <input id="emailinput" type="email" name="email">
+                </div>
+                <div class="formrow">
+                    <label for="passwordinput">Пароль: </label>
+                    <input id="passwordinput" type="password" name="password">
+                </div>
+                <div class="formrow">
+                    <label for="passwordinput">Повторите пароль: </label>
+                    <input id="passwordinput2" type="password" name="password2">
+                </div>
+                <div class="buttons">
+                    <button type="submit" name="buttonReg">Регистрация</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
